@@ -3,13 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>My Portfolio</title>
+    <style>
+        .content {
+            display: none;
+        }
+        #lang-switcher button {
+            margin: 5px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to My Portfolio</h1>
-    <p>This is my portfolio site hosted on GitHub Pages.</p>
-    <h2>My GitHub Repositories</h2>
-    <ul>
-        <li><a href="https://github.com/Wa-Takashi/aws-terraform-samples.git" target="_blank">aws-terraform-samples</a></li>
-    </ul>
+    <div id="lang-switcher">
+        <button onclick="switchLanguage('en')">English</button>
+        <button onclick="switchLanguage('ja')">日本語</button>
+    </div>
+
+    <div id="en" class="content">
+        <h1>Welcome to My Portfolio</h1>
+        <p>This is my portfolio site hosted on GitHub Pages.</p>
+        <h2>My GitHub Repositories</h2>
+        <ul>
+            <li><a href="https://github.com/yourusername/aws-terraform-samples" target="_blank">aws-terraform-samples</a></li>
+        </ul>
+    </div>
+
+    <div id="ja" class="content">
+        <h1>私のポートフォリオへようこそ</h1>
+        <p>これはGitHub Pagesでホストされている私のポートフォリオサイトです。</p>
+        <h2>私のGitHubリポジトリ</h2>
+        <ul>
+            <li><a href="https://github.com/yourusername/aws-terraform-samples" target="_blank">aws-terraform-samples</a></li>
+        </ul>
+    </div>
+
+    <script>
+        function switchLanguage(lang) {
+            document.querySelectorAll('.content').forEach(function(el) {
+                el.style.display = 'none';
+            });
+            document.getElementById(lang).style.display = 'block';
+        }
+
+        // 初期表示の言語を設定
+        document.addEventListener("DOMContentLoaded", function() {
+            var userLang = navigator.language || navigator.userLanguage;
+            var initialLang = userLang.startsWith('ja') ? 'ja' : 'en';
+            switchLanguage(initialLang);
+        });
+    </script>
 </body>
 </html>
